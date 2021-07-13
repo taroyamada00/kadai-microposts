@@ -18,6 +18,6 @@
     </ul>
     
     {{-- ページネーションのリンク --}}
-    {{ $users->Links() }}
+    {{ $users->links() }}
     
 @endif

@@ -1,0 +1,13 @@
+@if (Auth::id() != $user->id)//本人でない場合（ログインしている本人は表示されない）
+    @if (Auth::user()->is_following($user->id))
+        {{-- アンフォローボタンのフォーム --}}
+        {!! Form::open(['route' => ['user.unfollow', $user->id], 'method' => 'delete']) !!}
+            {!! Form::submit('Unfollow', ['class' => "btn btn-danger btn-block"]) !!}
+        {!! Form::close() !!}
+    @else
+        {{-- フォローボタンのフォーム --}}
+        {!! Form::open(['route' => ['user.follow', $user->id]]) !!}
+            {!! Form::submit('Follow', ['class' => "btn btn-primary btn-block"]) !!}
+        {!! Form::close() !!}
+    @endif
+@endif
