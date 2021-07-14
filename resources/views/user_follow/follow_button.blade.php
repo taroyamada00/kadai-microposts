@@ -1,4 +1,5 @@
-@if (Auth::id() != $user->id)//本人でない場合（ログインしている本人は表示されない）
+{{-- 本人でない場合（ログインしている本人は表示されない） --}}
+@if (Auth::id() != $user->id)
     @if (Auth::user()->is_following($user->id))
         {{-- アンフォローボタンのフォーム --}}
         {!! Form::open(['route' => ['user.unfollow', $user->id], 'method' => 'delete']) !!}
