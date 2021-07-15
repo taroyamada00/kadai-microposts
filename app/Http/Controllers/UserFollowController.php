@@ -33,4 +33,8 @@ class UserFollowController extends Controller
          // 前のURLへリダイレクトさせる
          return back();
      }
+     
+     /**
+     * 投稿をお気に入りするアクション。
+     */
 }
