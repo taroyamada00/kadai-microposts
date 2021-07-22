@@ -86,19 +86,20 @@ class UsersController extends Controller
      * ユーザが追加したお気に入り投稿を一覧表示するアクション
      */
     public function favorites($id) {
-        // idの値でユーザを検索して取得
+        
+        // idの値で検索して取得
         $user = User::findOrFail($id);
         
         // 関係するモデルの件数をロード
         $user->loadRelationshipCounts();
         
         // ユーザがお気に入りした投稿一覧を降順で取得
-        $favorites = $user->favorites()->orderBy('created_at', 'desc')->paginate(10);
-        
+        $microposts = $user->favorites()->orderBy('created_at', 'desc')->paginate(10);
+        //dd($favorites);
         // ユーザ詳細ビューでそれを表示
         return view('users.favorites', [
             'user' => $user,
-            'favorites' => $favorites,
+            'microposts' => $microposts,
     ]);
     }
 }
